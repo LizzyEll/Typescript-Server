@@ -1,6 +1,6 @@
 # Typescript Server
 ![Static Badge](https://img.shields.io/badge/Version-0.1_Alpha-Green?style=for-the-badge)
-![GitHub License](https://img.shields.io/github/license/LizzyEll/Typescript-Server?style=for-the-badge&label=License&cacheSeconds=1)
+![GitHub License](https://img.shields.io/github/license/LizzyEll/Typescript-Server?color=blue&style=for-the-badge&label=License&cacheSeconds=1)
 
 
 ## Why?
