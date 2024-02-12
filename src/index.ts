@@ -1,3 +1,3 @@
-import { printStart } from './screen';
+import printStart from './screen';
 
 printStart();
