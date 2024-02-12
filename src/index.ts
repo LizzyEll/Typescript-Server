@@ -14,6 +14,20 @@ const server = new Server(address);
 
 server.start();
 
-server.app.get('/', (req, res) => {
+// Example Route for Index
+server.setRoute('/', (req, res) => {
     res.send('Hello, World!');
+});
+
+// API Route
+server.setRoute('/api/index', './api/index');
+
+// Example Route for Home
+server.setRoute('/home', (req, res) => {
+    res.send('Hello, Home!');
+});
+
+// Example Route for redirect
+server.setRoute('/index.html', (req, res) => {
+    res.redirect('/');
 });
