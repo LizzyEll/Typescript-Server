@@ -13,4 +13,4 @@ const server = new Server(address);
 server.start();
 
 // Example file route
-server.setRoute("/", path.join(__dirname, "sites", "index.html"));
+server.setRoute("/", "./sites/index.html");

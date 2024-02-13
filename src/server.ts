@@ -77,7 +77,9 @@ export class Server {
                 handler(req, res);
                 break;
             case "string":
-                if (!handler.includes(".ts")) {
+                let path_ = path.parse(path.join(__dirname, handler));
+                handler = path.join(path_.dir, path_.base);
+                if (path_.ext != ".ts") {
                     fs.existsSync(handler)
                         ? res.sendFile(handler)
                         : this.send404(res);
