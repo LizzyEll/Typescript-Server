@@ -34,7 +34,7 @@ export class Server {
             );
         });
 
-        this.app.get("/*", (req, res) => {
+        this.app.all("/*", (req, res) => {
             this.handleRoute(req, res);
         });
     }
@@ -77,9 +77,11 @@ export class Server {
                 handler(req, res);
                 break;
             case "string":
+                
                 let path_ = path.parse(path.join(__dirname, handler));
                 handler = path.join(path_.dir, path_.base);
                 if (path_.ext != ".ts") {
+                    if (req.method != "GET") this.send404(res);
                     fs.existsSync(handler)
                         ? res.sendFile(handler)
                         : this.send404(res);

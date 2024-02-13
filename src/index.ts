@@ -14,3 +14,6 @@ server.start();
 
 // Example file route
 server.setRoute("/", "./sites/index.html");
+
+// Example API route
+server.setRoute("/api/index", "./api/index.ts")
