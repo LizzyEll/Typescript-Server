@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from "express";
+import path from "path";
 import fs from "fs";
 
 // Define the address type
@@ -64,7 +65,7 @@ export class Server {
     }
 
     private send404(res: Response): void {
-        res.status(404).send('Not Found');
+        res.status(404).send("Not Found");
     }
 
     private handleRoute(req: Request, res: Response): void {
@@ -75,10 +76,16 @@ export class Server {
             case "function":
                 handler(req, res);
                 break;
-            case 'string':
-                import (handler).then((module) => {
-                          module.default(req, res);
-                      });
+            case "string":
+                if (!handler.includes(".ts")) {
+                    fs.existsSync(handler)
+                        ? res.sendFile(handler)
+                        : this.send404(res);
+                    break;
+                }
+                import(handler).then((module) => {
+                    module.default(req, res);
+                });
                 break;
             default:
                 this.send404(res);
