@@ -1,6 +1,5 @@
 import printStart from "./screen";
 import { Server, Address } from "./server";
-import path from "path";
 
 printStart();
 
@@ -12,8 +11,3 @@ let address: Address = {
 const server = new Server(address);
 server.start();
 
-// Example file route
-server.setRoute("/", "./sites/index.html");
-
-// Example API route
-server.setRoute("/api/index", "./api/index.ts")
